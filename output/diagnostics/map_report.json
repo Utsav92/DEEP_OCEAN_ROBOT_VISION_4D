@@ -1,0 +1,110 @@
+{
+ "slam_used": true,
+ "grid_spacing_m": 4.0,
+ "grid_shape": [
+  834,
+  601
+ ],
+ "survey_coverage_fraction": 0.8716148148148148,
+ "soundings_used": 553362,
+ "evaluation_vs_truth": {
+  "dead_reckoning": {
+   "cells": 245378,
+   "rmse_m": 1.890504627523223,
+   "mae_m": 1.148479912390194,
+   "bias_m": -0.435764318337915,
+   "p95_abs_m": 3.9706228088724056
+  },
+  "slam": {
+   "cells": 244067,
+   "rmse_m": 1.449067525528585,
+   "mae_m": 0.8759240353081006,
+   "bias_m": -0.4692290950504238,
+   "p95_abs_m": 2.9707200833162863
+  },
+  "note": "evaluated on observed cells against the SIMULATED truth terrain (real bathymetry + inserted objects)"
+ },
+ "uncertainty": {
+  "cells_observed": 244067,
+  "sigma_median_m": 0.3650822341442108,
+  "sigma_p90_m": 0.7511622796284061,
+  "multi_pass_cells_fraction": 0.0
+ },
+ "obstacles": {
+  "candidates": 153,
+  "evaluation": {
+   "truth_objects": 4,
+   "detected": 4,
+   "candidates": 153,
+   "recall": 1.0,
+   "natural_relief_candidates": 149
+  }
+ },
+ "occupancy": {
+  "voxel_m": 20.0,
+  "shape": [
+   54,
+   168,
+   122
+  ],
+  "unknown_fraction": 0.9399629918755602,
+  "free_fraction": 0.04772566282129124,
+  "occupied_fraction": 0.012311345303148582,
+  "note": "unobserved water volume is UNKNOWN, never free"
+ },
+ "contours": {
+  "polylines": 119754,
+  "segments": 912274,
+  "interval_m": 25.0
+ },
+ "interpolated_cells": 62779,
+ "mesh": {
+  "frame": "local ENU m",
+  "kind": "observed cells only (no interpolation)",
+  "source": "SIMULATED multibeam over real NOAA bathymetry",
+  "slam": true,
+  "vertices": 225962,
+  "triangles": 371210,
+  "obj": "reconstructed_seabed.obj"
+ },
+ "touchdesigner_export": {
+  "z_ref_m": -779.0,
+  "t0_s": 5.037,
+  "t1_s": 13827.037,
+  "duration_s": 13822.0,
+  "n_pings": 6912,
+  "axes": "TD x=E, y=U-z_ref, z=-N",
+  "simulated": true,
+  "label": "SIMULATED AUV + SIMULATED SONAR over REAL NOAA bathymetry",
+  "dataset": "NOAA NCEI CUDEM 1/9 arc-second (via DEM global mosaic), Monterey Canyon CA",
+  "slam_available": true,
+  "planned_cells": 124544,
+  "slam": {
+   "odometry_edges": 1126,
+   "sonar_odometry_edges": 1119,
+   "loop_candidates": 833,
+   "loop_accepted": 501,
+   "loop_accepted_after_screening": 501,
+   "loops_screened_out": 95,
+   "slam_available": true
+  },
+  "display_points": 262144,
+  "recon_extent_xxyy": [
+   -1200.5,
+   1200.5,
+   -1666.0,
+   1666.0
+  ],
+  "recon_shape": [
+   512,
+   512,
+   4
+  ],
+  "n_loops": 501,
+  "n_versions": 10
+ },
+ "terrain_depth_range_m": [
+  -1031.98974609375,
+  -601.1864013671875
+ ]
+}

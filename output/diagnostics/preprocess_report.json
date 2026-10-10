@@ -1,0 +1,74 @@
+{
+ "navigation": {
+  "samples": 69166,
+  "duration_s": 13833.0,
+  "rate_hz_median": 5.0000000000045475,
+  "max_gap_s": 0.2000000000007276,
+  "channels": {
+   "imu": true,
+   "depth": true,
+   "dvl": true,
+   "usbl": false,
+   "reference_nav": false
+  },
+  "dvl_valid_fraction": 0.9967180406558136
+ },
+ "calibration_source": "file",
+ "sound_speed_profile": [
+  [
+   0,
+   14.0,
+   33.4
+  ],
+  [
+   30,
+   12.0,
+   33.5
+  ],
+  [
+   100,
+   9.5,
+   33.8
+  ],
+  [
+   300,
+   7.0,
+   34.1
+  ],
+  [
+   600,
+   5.0,
+   34.3
+  ],
+  [
+   1000,
+   4.0,
+   34.4
+  ],
+  [
+   1500,
+   3.2,
+   34.5
+  ],
+  [
+   2000,
+   2.8,
+   34.6
+  ]
+ ],
+ "filter_stats": {
+  "pings": 6912,
+  "beams": 96,
+  "soundings_total": 663552,
+  "with_detection": 562353,
+  "after_range_gate": 562189,
+  "after_quality": 557793,
+  "after_incidence": 557793,
+  "after_spike_filter": 553362,
+  "after_pose_status": 553362,
+  "kept": 553362,
+  "kept_fraction_of_detections": 0.9840118217560856,
+  "pose_status_nonzero": 0
+ },
+ "simulated": true
+}

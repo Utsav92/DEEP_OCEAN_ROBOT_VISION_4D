@@ -1,0 +1,88 @@
+{
+ "sources": [
+  {
+   "tag": "A",
+   "name": "GEBCO gridded bathymetry",
+   "url": "https://www.gebco.net/",
+   "note": "Global NetCDF grid; read with preprocessing.bathymetry_loader.load_netcdf (elevation variable, lat/lon).",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "B",
+   "name": "NOAA NCEI bathymetry (CUDEM / multibeam)",
+   "url": "https://www.ncei.noaa.gov/maps/bathymetry/",
+   "note": "Used: DEM global mosaic ImageServer export (GeoTIFF, EPSG:4326, 1/9 arc-second CUDEM tiles where available).",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "C",
+   "name": "MB-System",
+   "url": "https://www.mbari.org/technology/mb-system/",
+   "note": "Command-line multibeam processing; needs `mbinfo`/`mblist` on PATH and a supported raw format.",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "C",
+   "name": "MB-System repository",
+   "url": "https://github.com/dwcaress/MB-System",
+   "note": "Source and format list.",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "D",
+   "name": "MBARI",
+   "url": "https://www.mbari.org/",
+   "note": "Underwater robotics datasets (verify sensor channels per dataset).",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "D",
+   "name": "Woods Hole Oceanographic Institution",
+   "url": "https://www.whoi.edu/",
+   "note": "Research datasets (verify per dataset).",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "D",
+   "name": "University of Girona underwater robotics",
+   "url": "https://cirs.udg.edu/",
+   "note": "Sonar SLAM datasets (verify per dataset).",
+   "reachable": true,
+   "status": 200
+  },
+  {
+   "tag": "E",
+   "name": "Stonefish simulator",
+   "url": "https://github.com/patrykcieslak/stonefish",
+   "note": "Underwater simulator (not installed).",
+   "reachable": true,
+   "status": 200
+  }
+ ],
+ "tools": {
+  "mbinfo": null,
+  "mblist": null,
+  "ffmpeg": "C:\\Users\\Utsav\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.1.2-full_build\\bin\\ffmpeg.EXE",
+  "gdalinfo": null,
+  "ros2": null,
+  "gtsam": null,
+  "torch": "installed",
+  "rasterio": "installed",
+  "netCDF4": "installed",
+  "pyproj": "installed",
+  "skimage": "installed",
+  "cv2": "installed",
+  "rclpy": null
+ },
+ "selected": {
+  "real_bathymetry": "NOAA NCEI CUDEM 1/9 arc-second (via DEM global mosaic), Monterey Canyon CA",
+  "sonar": "SIMULATED multibeam + forward-looking sonar (Source E fallback)",
+  "reason": "no raw multibeam/sonar sequence with calibration + navigation was verified as downloadable here"
+ }
+}

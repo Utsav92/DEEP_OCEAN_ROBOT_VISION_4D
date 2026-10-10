@@ -1,0 +1,14 @@
+numpy>=1.26
+scipy>=1.11
+pyproj>=3.6
+rasterio>=1.3
+netCDF4>=1.6
+xarray>=2023.1
+scikit-image>=0.22
+opencv-python-headless>=4.8
+pyyaml>=6.0
+pytest>=8.0
+# optional
+torch>=2.2          # learning/ (offline patch auto-encoder); CPU is enough
+# gtsam>=4.2        # not used: slam/optimization.py is a self-contained robust SE(3) solver
+# rclpy             # MODE 6 only, comes with a ROS 2 install

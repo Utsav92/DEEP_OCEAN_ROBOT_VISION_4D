@@ -1,0 +1,142 @@
+# DEEP_OCEAN_ROBOT_VISION_4D - single configuration file (all scripts take --config config.yaml)
+project: DEEP_OCEAN_ROBOT_VISION_4D
+
+dataset:
+  name: "NOAA NCEI CUDEM 1/9 arc-second (via DEM global mosaic), Monterey Canyon CA"
+  provider: "NOAA National Centers for Environmental Information (NCEI)"
+  service_url: "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_global_mosaic/ImageServer"
+  viewer_url: "https://www.ncei.noaa.gov/maps/bathymetry/"
+  # lon_min, lat_min, lon_max, lat_max (EPSG:4326)
+  overview_bbox: [-122.10, 36.70, -121.90, 36.85]
+  overview_pixels: [1000, 750]
+  survey_bbox: [-122.0195, 36.7630, -121.9925, 36.7850]
+  survey_pixels: [700, 780]
+  overview_file: data/bathymetry/monterey_overview.tif
+  survey_file: data/bathymetry/monterey_survey_native.tif
+  license: "US Government work, NOAA NCEI open data policy (no use restrictions); confirm per-tile metadata"
+
+bathymetry:
+  nodata_values: [-99999.0, -32768.0, -9999.0]
+  max_abs_elevation_m: 12000.0
+  grid_spacing_m: 3.5          # metric resampling spacing of the survey tile
+  vertical_convention: "elevation_up_m"   # z up, negative below the sea surface
+  terrain_texture_size: 256    # height texture exported to TouchDesigner (cells per side)
+
+paths:
+  processed: data/processed
+  simulation: data/simulation
+  output: output
+
+simulation:
+  seed: 20261010
+  label: "SIMULATED AUV + SIMULATED SONAR over REAL NOAA bathymetry"
+  survey_inner_margin_m: 140.0     # keep tracklines this far inside the tile
+  survey_half_extent_m: [1050.0, 900.0]
+  line_spacing_m: 150.0
+  speed_mps: 2.5
+  nav_rate_hz: 5.0
+  ping_period_s: 2.0
+  ping_time_offset_s: 0.037        # sonar clock is not aligned with nav samples
+  altitude_m: 70.0
+  min_altitude_m: 25.0
+  max_pitch_deg: 14.0
+  turn_smoothing_m: 28.0
+  objects:                          # synthetic seabed objects inserted into the TRUTH terrain (flagged in outputs)
+    count: 4
+    size_m: [14.0, 9.0]
+    height_m: [7.0, 9.0]
+  dvl_dropouts: [[1800.0, 1830.0], [6200.0, 6215.0]]   # [start,end] seconds of lost bottom lock
+
+sonar:
+  model: "generic multibeam echosounder (simulated)"
+  n_beams: 96
+  swath_deg: 130.0
+  beam_across_deg: 1.35
+  max_range_m: 260.0
+  min_range_m: 3.0
+  range_sigma_frac: 0.0015
+  range_sigma_floor_m: 0.04
+  angle_sigma_deg: 0.15
+  dropout_prob: 0.02
+  outlier_prob: 0.004
+  mount_xyz_m: [0.6, 0.0, 0.35]     # in vehicle FRD
+  mount_rpy_deg: [0.0, 0.0, 0.0]
+  filter:
+    min_quality: 2
+    max_incidence_deg: 78.0
+    outlier_k: 8
+    outlier_sigma: 3.0
+    speckle_window: 3
+  fls:
+    enabled: true
+    n_bearings: 192
+    n_range_bins: 256
+    fov_deg: 120.0
+    vertical_aperture_deg: 14.0
+    tilt_down_deg: 25.0
+    max_range_m: 120.0
+    every_n_pings: 20
+
+sound_speed:
+  # (depth m, temperature C, salinity psu): typical Monterey Bay profile, used to build the simulated TWTT
+  profile: [[0, 14.0, 33.4], [30, 12.0, 33.5], [100, 9.5, 33.8], [300, 7.0, 34.1], [600, 5.0, 34.3],
+            [1000, 4.0, 34.4], [1500, 3.2, 34.5], [2000, 2.8, 34.6]]
+  assumed_profile_bias_mps: 0.0     # error between the profile used in processing and the "true" one
+
+navigation:
+  heading_bias_deg: 0.5
+  heading_noise_deg: 0.08
+  heading_walk_deg_per_sqrt_s: 0.012
+  dvl_scale_error: 0.003
+  dvl_noise_mps: 0.012
+  dvl_bias_mps: [0.004, -0.003, 0.0]
+  depth_noise_m: 0.08
+  attitude_noise_deg: 0.05
+
+slam:
+  keyframe_distance_m: 30.0
+  odom_sigma_trans_per_sqrt_m: 0.30
+  odom_sigma_rot_deg_per_sqrt_m: 0.06
+  grid_cell_m: 4.0
+  icp_max_iter: 40
+  icp_trim: 0.8
+  icp_max_pair_dist_m: 12.0
+  loop_search_radius_m: 160.0
+  loop_min_index_gap: 12
+  loop_max_candidates_per_kf: 4
+  loop_min_overlap: 0.25
+  loop_min_inlier_fraction: 0.6
+  loop_max_rmse_m: 1.2
+  loop_max_multistart_spread_m: 1.5
+  loop_max_pred_sigma_m: 1.5
+  loop_symmetry_tol_m: 1.5
+  prior_sigma_z_m: 0.15
+  prior_sigma_tilt_deg: 0.3
+  optimizer_max_nfev: 60
+
+mapping:
+  grid_spacing_m: 4.0
+  coverage_min_points: 1
+  contour_interval_m: 25.0
+  voxel_m: 20.0
+  obstacle_opening_m: 36.0
+  obstacle_min_height_m: 3.5
+  obstacle_min_area_m2: 60.0
+  max_display_points: 262144        # 512 x 512 position texture in TouchDesigner
+
+temporal:
+  history_sizes: [5, 10, 20, 50, 100, 500]
+  default_history: 50
+  decay_s: 90.0
+  time_axis_m_per_s: 0.08           # artistic time-explosion displacement (NOT measured)
+
+touchdesigner:
+  port: 9990
+  project_path: /project1/DEEP_OCEAN_ROBOT_VISION_4D
+  toe_name: Deep_Ocean_Robot_Vision_4D.toe
+  render_size: [1280, 720]          # non-commercial licence caps TOPs at 1280 px
+
+bridge:
+  protocol_version: 1
+  host: 127.0.0.1
+  port: 9871

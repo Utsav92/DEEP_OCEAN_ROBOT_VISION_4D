@@ -1,0 +1,9 @@
+{
+ "ate_rmse_dr_m": 8.954627960805034,
+ "ate_rmse_slam_m": 5.239763484500516,
+ "ate_max_dr_m": 29.814600719486638,
+ "ate_max_slam_m": 20.09919346414733,
+ "ate_mean_dr_m": 6.735992228824882,
+ "ate_mean_slam_m": 3.9152085552888196,
+ "evaluated_against": "simulated truth"
+}

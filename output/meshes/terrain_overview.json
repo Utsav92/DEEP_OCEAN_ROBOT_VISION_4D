@@ -1,0 +1,9 @@
+{
+ "frame": "local ENU m",
+ "source": "C:\\Users\\Utsav\\DEEP_OCEAN_ROBOT_VISION_4D\\data/bathymetry/monterey_overview.tif",
+ "datum": "NAVD88 (NCEI CUDEM tile metadata)",
+ "spacing_m": 52.5,
+ "vertices": 107780,
+ "triangles": 214248,
+ "obj": "terrain_overview.obj"
+}

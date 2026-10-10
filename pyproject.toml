@@ -1,0 +1,14 @@
+[project]
+name = "deep-ocean-robot-vision-4d"
+version = "1.0.0"
+description = "Underwater robotic perception, bathymetric SLAM and 4D sonar memory visualised in TouchDesigner"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "pyproj", "rasterio", "netCDF4", "xarray", "scikit-image", "opencv-python-headless", "pyyaml"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+learning = ["torch"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::UserWarning"]

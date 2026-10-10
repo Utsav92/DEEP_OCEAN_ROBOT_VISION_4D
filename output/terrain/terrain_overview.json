@@ -1,0 +1,29 @@
+{
+ "extent_xxyy": [
+  -8365.0,
+  9432.5,
+  -8190.0,
+  8417.5
+ ],
+ "shape": [
+  256,
+  256
+ ],
+ "min": -1860.67724609375,
+ "max": -61.402061462402344,
+ "valid_fraction": 1.0,
+ "axes": "row0=south(y0) col0=west(x0); values ENU elevation m",
+ "frame": {
+  "type": "transverse_mercator_local",
+  "lon0": -122.006,
+  "lat0": 36.774,
+  "k": 1.0,
+  "ellipsoid": "WGS84",
+  "axes": "x=East y=North z=Up",
+  "proj4": "+proj=tmerc +lat_0=36.774 +lon_0=-122.006 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs +type=crs"
+ },
+ "datum": "NAVD88 (NCEI CUDEM tile metadata)",
+ "source": "monterey_overview.tif",
+ "spacing_m": 17.5,
+ "kind": "REAL gridded bathymetry (NOAA NCEI)"
+}

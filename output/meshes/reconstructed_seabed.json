@@ -1,0 +1,9 @@
+{
+ "frame": "local ENU m",
+ "kind": "observed cells only (no interpolation)",
+ "source": "SIMULATED multibeam over real NOAA bathymetry",
+ "slam": true,
+ "vertices": 225962,
+ "triangles": 371210,
+ "obj": "reconstructed_seabed.obj"
+}

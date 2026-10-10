@@ -1,0 +1,9 @@
+{
+ "frame": "local ENU m",
+ "source": "C:\\Users\\Utsav\\DEEP_OCEAN_ROBOT_VISION_4D\\data/bathymetry/monterey_survey_native.tif",
+ "datum": "NAVD88 (NCEI CUDEM tile metadata)",
+ "spacing_m": 7.0,
+ "vertices": 164088,
+ "triangles": 326536,
+ "obj": "terrain_survey.obj"
+}

@@ -1,0 +1,190 @@
+{
+ "dataset_name": "NOAA NCEI CUDEM 1/9 arc-second (via DEM global mosaic), Monterey Canyon CA",
+ "source_url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_global_mosaic/ImageServer",
+ "viewer_url": "https://www.ncei.noaa.gov/maps/bathymetry/",
+ "dataset_version": "NCEI CUDEM 2023v1 tiles (ncei19_*_2023v1) via DEM_global_mosaic ImageServer, retrieved from the live service (no service-side version string published)",
+ "downloaded_files": [
+  "data/bathymetry/monterey_overview.tif",
+  "data/bathymetry/monterey_survey_native.tif"
+ ],
+ "file_hashes": {
+  "data/bathymetry/monterey_overview.tif": "e93a134be8ce2772372c1d72725125990a175c8748122693660ebc864dab37c0",
+  "data/bathymetry/monterey_survey_native.tif": "1ae77c1e345c1f2d0cfe3b2f8ca0f5c294350bbd739dd13c18b6747feba93045"
+ },
+ "source_tiles": {
+  "monterey_ca": {
+   "cell_arcsec": 0.333332986,
+   "vertical_datum": "MHW",
+   "metadata_url": "https://www.ngdc.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/DEM/iso/xml/414.xml&view=getDataView&header=none"
+  },
+  "monterey_ca_mhw": {
+   "cell_arcsec": 0.333332986,
+   "vertical_datum": "MHW",
+   "metadata_url": "https://www.ngdc.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/DEM/iso/xml/3545.xml&view=getDataView&header=none"
+  },
+  "monterey_navd88": {
+   "cell_arcsec": 0.333332986,
+   "vertical_datum": "NAVD 88",
+   "metadata_url": "https://www.ngdc.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/DEM/iso/xml/3544.xml&view=getDataView&header=none"
+  },
+  "socal_1as": {
+   "cell_arcsec": 1,
+   "vertical_datum": "MSL",
+   "metadata_url": "https://www.ngdc.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/DEM/iso/xml/4970.xml&view=getDataView&header=none"
+  },
+  "socal_3as": {
+   "cell_arcsec": 3,
+   "vertical_datum": "MSL",
+   "metadata_url": "https://www.ngdc.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/DEM/iso/xml/4970.xml&view=getDataView&header=none"
+  },
+  "ETOPO_2022_v1_15s_surface_elev": {
+   "cell_arcsec": 15,
+   "vertical_datum": null,
+   "metadata_url": null
+  },
+  "ncei19_n36x75_w122x00_2023v1": {
+   "cell_arcsec": 0.111111,
+   "vertical_datum": "NAVD 88",
+   "metadata_url": "https://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.dem:999919/html"
+  },
+  "ncei19_n36x75_w122x25_2023v1": {
+   "cell_arcsec": 0.111111,
+   "vertical_datum": "NAVD 88",
+   "metadata_url": "https://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.dem:999919/html"
+  },
+  "ncei19_n37x00_w122x00_2023v1": {
+   "cell_arcsec": 0.111111,
+   "vertical_datum": "NAVD 88",
+   "metadata_url": "https://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.dem:999919/html"
+  },
+  "ncei19_n37x00_w122x25_2023v1": {
+   "cell_arcsec": 0.111111,
+   "vertical_datum": "NAVD 88",
+   "metadata_url": "https://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.dem:999919/html"
+  }
+ },
+ "license": {
+  "name": "NOAA NCEI CUDEM 1/9 arc-second (via DEM global mosaic), Monterey Canyon CA",
+  "license": "US Government work, NOAA NCEI open data policy (no use restrictions); confirm per-tile metadata",
+  "provider": "NOAA National Centers for Environmental Information (NCEI)",
+  "license_url": "https://www.ncei.noaa.gov/about/data-policy",
+  "restrictions": "none stated by NOAA NCEI; attribution to NOAA NCEI requested; verify the per-tile metadata_url before redistribution"
+ },
+ "license_review": {
+  "valid": true,
+  "needs_review": false,
+  "problems": []
+ },
+ "sensor_modalities": {
+  "real": [
+   "gridded bathymetry (compiled multibeam/lidar, elevation grid)"
+  ],
+  "simulated": [
+   "multibeam echosounder",
+   "forward-looking sonar",
+   "DVL",
+   "AHRS",
+   "pressure"
+  ]
+ },
+ "coordinate_reference_system": {
+  "source": "EPSG:4326 (WGS84 geographic)",
+  "working": "local transverse Mercator ENU, origin at the survey-tile centre"
+ },
+ "time_base": "none for the real bathymetry (a compiled grid has no acquisition timestamps); simulated survey uses seconds since mission start",
+ "calibration_available": {
+  "real_data": false,
+  "simulated_sonar": "sensor mount + beam geometry from config.yaml"
+ },
+ "navigation_available": {
+  "real_data": false,
+  "simulated": "DVL + AHRS + depth dead reckoning with modelled error"
+ },
+ "measurement_units": {
+  "elevation": "m (up positive)",
+  "range": "m",
+  "angle": "rad",
+  "time": "s",
+  "velocity": "m/s"
+ },
+ "supported_processing_modes": [
+  "MODE 1 real bathymetry (works)",
+  "MODE 5 simulated AUV (works)",
+  "MODE 2 multibeam survey (pipeline exercised on SIMULATED soundings only)",
+  "MODE 3 forward-looking sonar (simulated images)",
+  "MODE 4 underwater SLAM (simulated sequence with ground truth)",
+  "MODE 6 live ROS 2 (code present, never run)"
+ ],
+ "missing_requirements": [
+  "no real raw multibeam / sonar sequence with calibration and navigation was obtained",
+  "MB-System not installed (mbinfo/mblist absent)",
+  "GTSAM not installed (own robust SE(3) pose-graph solver used)",
+  "no GPU with 12 GB VRAM (integrated graphics only)"
+ ],
+ "simulation": {
+  "label": "SIMULATED AUV + SIMULATED SONAR over REAL NOAA bathymetry",
+  "simulated": true,
+  "seed": 20261010,
+  "n_pings": 6912,
+  "n_beams": 96,
+  "duration_s": 13833.0,
+  "track_length_m": 34544.11237179671,
+  "half_extent_m": [
+   1050.0,
+   900.0
+  ],
+  "objects": [
+   {
+    "x": 861.0,
+    "y": -665.0,
+    "yaw": 1.8985915271615414,
+    "length": 14.0,
+    "width": 9.0,
+    "height": 7.907299283456255,
+    "synthetic": true
+   },
+   {
+    "x": -675.5,
+    "y": -112.0,
+    "yaw": 2.5201437394121893,
+    "length": 14.0,
+    "width": 9.0,
+    "height": 8.353010224951369,
+    "synthetic": true
+   },
+   {
+    "x": -878.5,
+    "y": -686.0,
+    "yaw": 1.3124924421346973,
+    "length": 14.0,
+    "width": 9.0,
+    "height": 8.925512213704234,
+    "synthetic": true
+   },
+   {
+    "x": -182.0,
+    "y": 465.5,
+    "yaw": 2.4711858604094674,
+    "length": 14.0,
+    "width": 9.0,
+    "height": 8.6409331315444,
+    "synthetic": true
+   }
+  ],
+  "dvl_dropouts": [
+   [
+    1800.0,
+    1830.0
+   ],
+   [
+    6200.0,
+    6215.0
+   ]
+  ],
+  "valid_beam_fraction": 0.8474889684606481,
+  "min_altitude_m": 69.99999999999977,
+  "max_pitch_deg": 16.684135174227425,
+  "note": "Real NOAA NCEI terrain; vehicle, sensors, noise, navigation error and objects are synthetic."
+ },
+ "synthetic_flags": "all sonar, navigation and inserted seabed objects are SIMULATED; only the terrain is real"
+}
